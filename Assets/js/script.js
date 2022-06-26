@@ -4,43 +4,87 @@ var generateBtn = document.querySelector("#generate");
 // Global Variables 
 var uppercaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var numberChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var numberChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
-var userPasswordLength = "";
 
-function validatePasswordLength() {
-  if (userPasswordLength >= 8 && userPasswordLength < 128) {
-    //continue to prompt about character selections
-  }
-  else ("Error: Please enter a valid length of characters between 8 and 127.")
-}
+// Global Function
+
+/* Gives you a random index number within the passwordCharCart array,
+then selects the data assigned to that index number from the passwordCharCart array. */
+function randomIndexNumber() {
+  passwordCharCart[Math.floor(Math.random() * passwordCharCart.length)];
+} 
 
 function generatePassword() {
 
-  function passwordGen() {
+  // Prompt the user for their password length and take their input as a string.
+  var userPasswordLengthString = window.prompt("How many characters do you want your password to be? Type a number between 8 and 127.");
 
-    /* The function randomChar gives you a random index number within the passwordChar array 
-    then selects the data assigned to that index number from the passwordChar array.
-    (The passwordChar array is based upon user input to opt-in to various character sets.) */
-    function randomChar() {
-      passwordChar(Math.floor(Math.random() * passwordChar.length));
-    }
+  // Convert the user's password length string to a number.
+  var userPasswordLengthNumber = parseInt(userPasswordLengthString);
 
-    /*This for loop repeats the function passwordGen until the condition of meeting the user's selected password length is met. */
-    for (let i = 0; i < userPasswordLength; i++) {
-      randomPassword += randomChar();
-    }
-    
+  // Validates the condition of choosing a number within the given range.
+  if (userPasswordLengthNumber >= 8 && userPasswordLengthNumber < 128) {
+    console.log(userPasswordLengthNumber);
+  } else {
+    window.alert("Try again. Please enter a valid number between 8 and 127.");
+    return; // Due to an invalid entry, return back to where the function generatePassword was originally called. 
   }
 
+  // Confirm dialog boxes create true/false values.
+  var includeUpperCase = confirm("Would you like to include uppercase characters?");
+  console.log(includeUpperCase)
+
+  var includeLowerCase = confirm("Would you like to include lowercase characters?");
+  console.log(includeLowerCase)
+
+  var includeNumbers = confirm("Would you like to include numeric characters?");
+  console.log(includeNumbers)
+
+  var includeSpecialChar = confirm("Would you like to include special characters?");
+  console.log(includeSpecialChar)
+
+  // If the user confirms true on an array of a character set, then place their variables in the passwordCharCart.
+  // This is an array of arrays. 
+  var passwordCharCart = []
+
+  if (includeUpperCase) /*if truthy*/ {
+    passwordCharCart.push(uppercaseChar); // .push Adds the uppercase array to the cart.
+  }
+
+  if (includeLowerCase) {
+    passwordCharCart.push(lowercaseChar); // .push Adds the lowercase array to the cart.
+  }
+
+  if (includeNumbers) {
+    passwordCharCart.push(numberChar); // .push Adds the number array to the cart.
+  }
+
+  if (includeSpecialChar) {
+    passwordCharCart.push(specialChar); // .push Adds the special character array to the cart.
+  }
+
+  if (!includeUpperCase && !includeLowerCase && !includeNumbers && !includeSpecialChar) /*if falsy*/ {
+    window.alert("Please confirm at least one character set. Options include uppercase letters, lowercase letters, numbers, and special characters.");
+    return; // If the user does not select any character set, return back to where function generatePassword was originally called.
+  }
+
+  console.log(passwordCharCart);
+
+  /*This for loop repeats the function randomIndexNumber until the condition of meeting the user's selected password length is met. */
+  for (i = 0; i < userPasswordLengthNumber; i++) {
+    var newPassword = passwordCharCart[randomIndexNumber];
+  }
+
+  console.log(newPassword);
 }
 
-// Write password to the #password input
+// Writes password to the #password input on the page.
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
 
-// Add event listener to generate button
+// Adds an event listener to the generate button.
 generateBtn.addEventListener("click", writePassword);

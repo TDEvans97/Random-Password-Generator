@@ -1,5 +1,6 @@
 Prompt the user for password criteria on Generate Password button click.
-    a. User selects password character length of at least 8 characters and no more than 128. (8 < 128)
+    
+    a. User selects password character length of at least 8 characters and no more than 128. 
         1. Invalidate an answer that does not meet the specified range or datatype. 
 
     b. Do you want lowercase characters? Y/N
