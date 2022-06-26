@@ -7,13 +7,14 @@ var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 var numberChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
 
-// Global Function
+// Global Functions
 
 /* Gives you a random index number within the passwordCharCart array,
 then selects the data assigned to that index number from the passwordCharCart array. */
 function randomIndexNumber() {
   passwordCharCart[Math.floor(Math.random() * passwordCharCart.length)];
-} 
+  return;
+}
 
 function generatePassword() {
 
