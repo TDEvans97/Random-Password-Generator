@@ -15,11 +15,6 @@ function validatePasswordLength() {
   else ("Error: Please enter a valid length of characters between 8 and 127.")
 }
 
-
-
-
-
-
 function generatePassword() {
 
   function passwordGen() {
@@ -39,7 +34,6 @@ function generatePassword() {
   }
 
 }
-
 
 // Write password to the #password input
 function writePassword() {
