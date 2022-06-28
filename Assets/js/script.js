@@ -11,7 +11,7 @@ var masterList = [""];
 
 // Gives you a random index number within the passwordCharCart array.
 function getRandomNumber() {
-  masterList += passwordCharCart
+  // masterList += passwordCharCart
   var randomNumber = Math.floor(Math.random() * masterList.length); 
   console.log(masterList);
   console.log(randomNumber);
