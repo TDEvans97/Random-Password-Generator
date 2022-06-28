@@ -6,15 +6,16 @@ var uppercaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
 var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numberChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
-
+var passwordCharCart = [];
 // Global Functions
 
 /* Gives you a random index number within the passwordCharCart array,
 then selects the data assigned to that index number from the passwordCharCart array. */
 function randomIndexNumber() {
-  passwordCharCart[Math.floor(Math.random() * passwordCharCart.length)];
-  return;
+  randomNumber = Math.floor(Math.random() * passwordCharCart.length);
+  return randomNumber;
 }
+
 
 function generatePassword() {
 
@@ -46,23 +47,23 @@ function generatePassword() {
   console.log(includeSpecialChar)
 
   // If the user confirms true on an array of a character set, then place their variables in the passwordCharCart.
-  // This is an array of arrays. 
-  var passwordCharCart = []
+  // This is a master list array of strings. 
+  var passwordCharCart = [];
 
   if (includeUpperCase) /*if truthy*/ {
-    passwordCharCart.push(uppercaseChar); // .push Adds the uppercase array to the cart.
+    passwordCharCart = passwordCharCart.concat(uppercaseChar); // .concat Concatenates the uppercase array to the cart.
   }
 
   if (includeLowerCase) {
-    passwordCharCart.push(lowercaseChar); // .push Adds the lowercase array to the cart.
+    passwordCharCart = passwordCharCart.concat(lowercaseChar); // .concat Concatenates the lowercase array to the cart.
   }
 
   if (includeNumbers) {
-    passwordCharCart.push(numberChar); // .push Adds the number array to the cart.
+    passwordCharCart = passwordCharCart.concat(numberChar); // .concat Concatenates the number array to the cart.
   }
 
   if (includeSpecialChar) {
-    passwordCharCart.push(specialChar); // .push Adds the special character array to the cart.
+    passwordCharCart = passwordCharCart.concat(specialChar); // .concat Concatenates the special character array to the cart.
   }
 
   if (!includeUpperCase && !includeLowerCase && !includeNumbers && !includeSpecialChar) /*if falsy*/ {
@@ -73,11 +74,12 @@ function generatePassword() {
   console.log(passwordCharCart);
 
   /*This for loop repeats the function randomIndexNumber until the condition of meeting the user's selected password length is met. */
-  for (i = 0; i < userPasswordLengthNumber; i++) {
-    var newPassword = passwordCharCart[randomIndexNumber];
+  for (var i = 0; i < userPasswordLengthNumber; i++) {
+    // Get a random index number for each iteration
+    // Use that random index number to pull a char from passwordCharCart
+    // randomIndexNumber[i];
   }
-
-  console.log(newPassword);
+  
 }
 
 // Writes password to the #password input on the page.
