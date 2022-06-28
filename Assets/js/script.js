@@ -6,12 +6,16 @@ var uppercaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
 var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numberChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
-
+var masterList = [""];
 // Global Functions
 
 // Gives you a random index number within the passwordCharCart array.
 function getRandomNumber() {
-  return Math.floor(Math.random() * passwordCharCart.length); 
+  masterList += passwordCharCart
+  var randomNumber = Math.floor(Math.random() * masterList.length); 
+  console.log(masterList);
+  console.log(randomNumber);
+  return randomNumber;
 }
 
 function getChar() {
@@ -73,10 +77,11 @@ function generatePassword() {
   }
 
   console.log(passwordCharCart);
+  
   var generatedPassword = "";
   
   /*This for loop repeats the functions getRandomNumber and getChar until the condition of meeting the user's selected password length is met. */
-  for (i = 0; i === userPasswordLengthNumber; i++) {
+  for (i = 0; i < userPasswordLengthNumber; i++) {
     getRandomNumber(); // Get a random number for each iteration
     getChar(); // In the function getChar, use those random numbers as index numbers to pull a char from passwordCharCart
     generatedPassword += getChar;
