@@ -6,14 +6,13 @@ var uppercaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
 var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numberChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
-var masterList = [""];
+
 // Global Functions
 
 // Gives you a random index number within the passwordCharCart array.
 function getRandomNumber() {
-  // masterList += passwordCharCart
-  var randomNumber = Math.floor(Math.random() * masterList.length); 
-  console.log(masterList);
+  var randomNumber = Math.floor(Math.random() * passwordCharCart.length); 
+  console.log(passwordCharCart);
   console.log(randomNumber);
   return randomNumber;
 }
@@ -40,20 +39,16 @@ function generatePassword() {
 
   // Confirm dialog boxes create true/false values.
   var includeUpperCase = confirm("Would you like to include uppercase characters?");
-  console.log(includeUpperCase)
 
   var includeLowerCase = confirm("Would you like to include lowercase characters?");
-  console.log(includeLowerCase)
-
+ 
   var includeNumbers = confirm("Would you like to include numeric characters?");
-  console.log(includeNumbers)
 
   var includeSpecialChar = confirm("Would you like to include special characters?");
-  console.log(includeSpecialChar)
 
   // If the user confirms true on an array of a character set, then place their variables in the passwordCharCart.
   // This is a master list array of strings. 
-  var passwordCharCart = [];
+  var passwordCharCart = "";
 
   if (includeUpperCase) /*if truthy*/ {
     passwordCharCart = passwordCharCart.concat(uppercaseChar); // .concat Concatenates the uppercase array to the cart.
