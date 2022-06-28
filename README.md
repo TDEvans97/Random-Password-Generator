@@ -5,4 +5,4 @@ The challenge for Week 3 is to create a random password generator that provides 
 ![Screenshot of the live site.](Assets/images/password%20generator.png)
 
 Link to the deployed application: 
-[Password Generator](https://tdevans97.github.io/Week-3-Challenge/)
+[Password Generator](https://tdevans97.github.io/Random-Password-Generator/)
