@@ -6,16 +6,17 @@ var uppercaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
 var lowercaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numberChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
-var passwordCharCart = [];
+
 // Global Functions
 
-/* Gives you a random index number within the passwordCharCart array,
-then selects the data assigned to that index number from the passwordCharCart array. */
-function randomIndexNumber() {
-  randomNumber = Math.floor(Math.random() * passwordCharCart.length);
-  return randomNumber;
+// Gives you a random index number within the passwordCharCart array.
+function getRandomNumber() {
+  return Math.floor(Math.random() * passwordCharCart.length); 
 }
 
+function getChar() {
+  return passwordCharCart[getRandomNumber];
+}
 
 function generatePassword() {
 
@@ -72,14 +73,16 @@ function generatePassword() {
   }
 
   console.log(passwordCharCart);
-
-  /*This for loop repeats the function randomIndexNumber until the condition of meeting the user's selected password length is met. */
-  for (var i = 0; i < userPasswordLengthNumber; i++) {
-    // Get a random index number for each iteration
-    // Use that random index number to pull a char from passwordCharCart
-    // randomIndexNumber[i];
+  var generatedPassword = "";
+  
+  /*This for loop repeats the functions getRandomNumber and getChar until the condition of meeting the user's selected password length is met. */
+  for (i = 0; i === userPasswordLengthNumber; i++) {
+    getRandomNumber(); // Get a random number for each iteration
+    getChar(); // In the function getChar, use those random numbers as index numbers to pull a char from passwordCharCart
+    generatedPassword += getChar;
   }
   
+  return generatedPassword;
 }
 
 // Writes password to the #password input on the page.
